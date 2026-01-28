@@ -1,8 +1,11 @@
 module Api
   module V1
     class BooksController < ApplicationController
+      require_relative '../../../representers/books_representer'
+
       def index
-        render json: Book.all
+        books = Book.all
+        render json: BooksRepresenter.new(books).as_json
       end
 
       def create
@@ -23,7 +26,7 @@ module Api
       private
 
       def book_params
-        params.require(:book).permit(:title, :author)
+        params.require(:book).permit(:title, :author_id)
       end
     end
   end
