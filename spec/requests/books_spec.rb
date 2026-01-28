@@ -25,9 +25,8 @@ describe "Books API", type: :request do
   end
 
   describe "DELETE /books/:id" do
+    let!(:book) { FactoryBot.create(:book, title: "To Kill a Mockingbird", author: "Harper Lee")}
     it 'deletes a book' do
-      book = FactoryBot.create(:book, title: "To Kill a Mockingbird", author: "Harper Lee")
-
       expect {
         delete "/api/v1/books/#{book.id}"
       }.to change(Book, :count).by(-1)
