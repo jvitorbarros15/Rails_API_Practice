@@ -15,7 +15,7 @@ class BooksRepresenter
     end
   end
 
-  private 
+  private
 
   attr_reader :books
 
