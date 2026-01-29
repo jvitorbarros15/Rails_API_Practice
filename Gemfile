@@ -46,7 +46,7 @@ group :development, :test do
   gem "brakeman", require: false
 
   # RSpec for Rails
-  gem "rspec-rails", "~> 6.0.0"
+  gem "rspec-rails", "~> 8.0.2"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
