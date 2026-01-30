@@ -5,7 +5,6 @@ describe "Books API", type: :request do
   let(:second_author) { FactoryBot.create(:author, first_name: "JK", last_name: "Rowling", age: 58) }
   let(:third_author) { FactoryBot.create(:author, first_name: "JRR", last_name: "Tolkien", age: 83) }
   describe "GET /books" do
-
     before do
       FactoryBot.create(:book, title: "1984", author: first_author)
       FactoryBot.create(:book, title: "Harry Potter", author: second_author)
@@ -22,19 +21,19 @@ describe "Books API", type: :request do
           'id' => 1,
           'title' => "1984",
           'author_name' => "George Orwell",
-          'author_age' => 46,
+          'author_age' => 46
           },
           {
           'id' => 2,
           'title' => "Harry Potter",
           'author_name' => "JK Rowling",
-          'author_age' => 58,
+          'author_age' => 58
           },
           {
           'id' => 3,
           'title' => "The Hobbit",
           'author_name' => "JRR Tolkien",
-          'author_age' => 83,
+          'author_age' => 83
           }
         ]
      )
@@ -51,7 +50,7 @@ describe "Books API", type: :request do
           'id' => 1,
           'title' => "1984",
           'author_name' => "George Orwell",
-          'author_age' => 46,
+          'author_age' => 46
           }
         ]
       )
@@ -68,7 +67,7 @@ describe "Books API", type: :request do
           'id' => 2,
           'title' => "Harry Potter",
           'author_name' => "JK Rowling",
-          'author_age' => 58,
+          'author_age' => 58
           }
         ]
       )
@@ -78,8 +77,8 @@ describe "Books API", type: :request do
     it 'creates a new book' do
       expect {
         post "/api/v1/books", params: {
-          book: {title: "Dune"},
-          author:  {first_name: "Frank", last_name: "Herbert", age: '65'}
+          book: { title: "Dune" },
+          author:  { first_name: "Frank", last_name: "Herbert", age: '65' }
         }
       }.to change(Book, :count).by(1)
 
@@ -90,7 +89,7 @@ describe "Books API", type: :request do
         'id' => 1,
         'title' => "Dune",
         'author_name' => "Frank Herbert",
-        'author_age' => 65,
+        'author_age' => 65
         }
       )
     end

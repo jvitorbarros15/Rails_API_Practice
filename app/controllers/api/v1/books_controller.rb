@@ -10,12 +10,12 @@ module Api
       def create
         author = Author.create!(author_params)
         book = Book.new(book_params.merge(author_id: author.id))
-        
+
         UpdateSkuJob.perform_later(book_params[:title])
 
 
         if book.save
-          render json: BooksRepresenter.new([book]).as_json.first, status: :created
+          render json: BooksRepresenter.new([ book ]).as_json.first, status: :created
         else
           render json: book.errors, status: :unprocessable_entity
         end
@@ -28,7 +28,7 @@ module Api
 
       private
 
-      def limit 
+      def limit
         [
           params.fetch(:limit, MAX_PAGINATION_LIMIT).to_i,
           MAX_PAGINATION_LIMIT
